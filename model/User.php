@@ -7,7 +7,7 @@
  * 
  * @package Models
  * @subpackage User
- * @author Enrique Pérez Clavier
+ * @author Enrique Pï¿½rez Clavier
  * @version 0.1
  */
 
@@ -27,5 +27,4 @@ class User extends Model {
     
     
 }
-
 ?>
