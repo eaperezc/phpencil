@@ -16,23 +16,24 @@ We think that this could be a nice starting point for new php projects that dont
 
 PHPencil is using this widelly used technologies:
 
-* [Twig] - Template engine
+* [Composer] - Dependency management system.
+* [Twig] - Template engine.
 * [Twitter Bootstrap] - for the examples (not required).
-* [jQuery] - duh
+* [jQuery] - duh.
 
 ### Installation
 
 Get the code and start using it:
 
 ```sh
-$ git clone [git-repo-url] myApp
+$ git clone https://github.com/eaperezc/phpencil.git myApp
 $ cd myApp
 $ php composer.phar update
 ```
 
 ### Plugins
 
-We created a some Sublime Snippets to help the creation of classes on the framework and some helpers. This way you dont have to worry about memorizing the code but just call this snippets and the code will be there for you to complete.
+We created some Sublime Snippets to help the creation of classes on the framework and some helpers. This way you dont have to worry about memorizing the code but just call this snippets and the code will be there for you to complete.
 
 ### Development
 
