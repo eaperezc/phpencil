@@ -101,7 +101,8 @@ class Router
 
 		// Validate that the method for the action is defined
 		if ( !method_exists ($controller, $params['action']) ) {
-			print_r($params['action'] . ' - Action is not defined.');
+			// This will render the 404 error
+			$controller->view->render();
 			die();
 		}
 

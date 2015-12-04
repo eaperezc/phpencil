@@ -16,6 +16,15 @@
         <!-- Browser favicon -->
         <link rel="shortcut icon" href="favicon.png">
 
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+        <!-- Jquery -->
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
     </head>
     <body style="background-color:#ddd;">
         <!--[if lt IE 7]>
@@ -25,16 +34,6 @@
         <div class="container">
 			{% include content_tpl %}
 		</div>
-
-		<!-- Jquery -->
-        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-        <!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
 
     </body>
 </html>
