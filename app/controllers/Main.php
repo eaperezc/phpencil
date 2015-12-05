@@ -26,6 +26,9 @@ class Main extends Controller
 	public function beforeAction()
 	{
         # This happens before everything...
+
+        // Set the content of the page
+        $this->view->layout = 'app-layout.php';
 	}
 
 	/**
@@ -71,10 +74,6 @@ class Main extends Controller
      */
     public function edit()
     {
-
-        // Set the content of the page
-        $this->view->layout = 'clean.php';
-
         // Set the content of the page
         $this->view->content_tpl = 'main/edit.php';
     }
