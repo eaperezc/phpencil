@@ -19,6 +19,9 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
         <!-- Jquery -->
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
@@ -41,13 +44,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Project name</a>
+              <a class="navbar-brand" href="#">PHPencil</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="index">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="edit">Contact</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                   <ul class="dropdown-menu">
@@ -62,12 +65,12 @@
                 </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Action</a></li>
+                <li><a href="#"><i class="fa fa-bell"></i></a></li>
+                <li><a href="#">Logout</a></li>
               </ul>
             </div><!--/.nav-collapse -->
           </div>
         </nav>
-
 
         <div class="container">
 			{% include content_tpl %}
