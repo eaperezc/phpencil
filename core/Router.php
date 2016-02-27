@@ -48,7 +48,7 @@ class Router
 
 	    // Controller and action. Index action is default if not defined
         $params = [
-        	'controller' => $cleanParams[1],
+        	'controller' => !empty($cleanParams[1])?$cleanParams[1]:'main',
         	'action' 	 => !empty($cleanParams[2])?$cleanParams[2]:'index'
         ];
 
@@ -74,40 +74,46 @@ class Router
 	 */
 	private function route($params)
 	{
-		// We prepare the requested controller path
-		$controller_name = ucfirst($params['controller']);
-		$controller_path = APP_DIR . 'controllers/' . ucfirst($params['controller'] . '.php');
 
-		// Validate that the controller file exist
-		if ( !file_exists($controller_path) ) {
+        try {
+            // We prepare the requested controller path
+            $controller_name = ucfirst($params['controller']);
+            $controller_path = APP_DIR . 'controllers/' . ucfirst($params['controller'] . '.php');
 
-			// A controller needs to be defined
-			if ( empty($params['controller']) ){
-				print_r('No controller was defined in the request.');
-				die();
-			}
+            // Validate that the controller file exist
+            if ( !file_exists($controller_path) ) {
 
-			print_r(ucfirst($params['controller'] . '.php') . ' - Controller file doesn\'t exist.');
-			die();
-		}
+                // A controller needs to be defined (will never happen)
+                if ( empty($params['controller']) ){
+                    throw new Exception('No controller was defined in the request.');
+                }
 
-		// We include the controller
-		require_once( $controller_path );
+                $error = (ucfirst($params['controller'] . '.php') . ' - Controller file doesn\'t exist.');
+                throw new Exception($error);
+            }
 
-		// Instantiate the controller
-		$controller = new $controller_name( 
-			isset($params['args'])? $params['args']: null 
-		);
+            // We include the controller
+            require_once( $controller_path );
 
-		// Validate that the method for the action is defined
-		if ( !method_exists ($controller, $params['action']) ) {
-			// This will render the 404 error
-			$controller->view->render();
-			die();
-		}
+            // Instantiate the controller
+            $controller = new $controller_name( 
+                isset($params['args'])? $params['args']: null 
+            );
 
-		// Call the action
-		$controller->callAction($params['action']);
+            // Validate that the method for the action is defined
+            if ( !method_exists ($controller, $params['action']) ) {
+                throw new Exception('Action "' . $params['action'] . '" is not available');
+            }
+
+            // Call the action
+            $controller->callAction($params['action']);
+
+        } catch( Exception $e ) {
+            // Here we will capture any problem found on the routing
+            $view = new Presenter();
+            $view->renderError($e->getMessage());
+        }
+		
 	}
 
 

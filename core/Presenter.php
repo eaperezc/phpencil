@@ -28,7 +28,7 @@ class Presenter
 	 * This template defines content that will be used inside of 
 	 * the layout_tpl. Usually its different per controller action.
 	 */
-	public $content_tpl = 'errors/404.php';
+	public $template = 'errors/404.php';
 
     /**
      * View variables.
@@ -62,6 +62,12 @@ class Presenter
         $loader = new Twig_Loader_Filesystem( APP_DIR . 'views/');
         $this->engine = new Twig_Environment($loader);
 
+        // this will serve as a helper function to get to the assets folder
+        $this->engine->addFunction(new Twig_SimpleFunction("asset", 
+            function ($file_path) {
+                return 'app/public/' . $file_path;
+        }));
+
     }
 
     /**
@@ -92,20 +98,46 @@ class Presenter
     public function render()
     {
         // Sets the content tpl for this render
-        $this->vars['content_tpl'] = $this->content_tpl;
+        $this->vars['layout']   = 'layouts/' . $this->layout;
+        $this->vars['template'] = $this->template;
 
         try {
             // Includes the layout for the view
-            echo $this->engine->render('layouts/' . $this->layout, $this->vars);
+            echo $this->engine->render($this->template, $this->vars);
             
         } catch (Exception $e) {
             
             // The content is going to be the error page
-            $this->vars['content_tpl'] = 'errors/404.php';
+            $this->vars['template'] = 'errors/404.php';
             // Includes the layout for the view
-            echo $this->engine->render('layouts/' . $this->layout, $this->vars);
+            echo $this->engine->render($this->template, $this->vars);
         }
 
     }
+
+
+    /**
+     * Render error page
+     *
+     * This is a helper method that will render the error message
+     * pages on demand.
+     *
+     * @access public
+     * @since 0.1
+     */
+    public function renderError($message = '', $type = '404')
+    {
+        // Sets the content tpl for this render
+        $this->layout   = 'errors.php';
+        $this->template =  'errors/' . $type . '.php';
+
+        // error message to be displayed
+        $this->assign('error', $message);
+
+        // Includes the layout for the view
+        $this->render();
+    }
+
+
 }
 

@@ -2,4 +2,5 @@
 vendor/
 
 # Composer files
-composer.lock
+#composer.lock
+composer.phar

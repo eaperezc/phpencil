@@ -28,7 +28,7 @@ class Main extends Controller
         # This happens before everything...
 
         // Set the content of the page
-        $this->view->layout = 'app-layout.php';
+        //$this->view->layout = 'app-layout.php';
 	}
 
 	/**
@@ -56,7 +56,7 @@ class Main extends Controller
     {
 
         // Set the content of the page
-        $this->view->content_tpl = 'main/index.php';
+        $this->view->template = 'main/index.php';
 
         // Set the variables for the view
         $this->view->assign('title', 'Index Title');
