@@ -1,10 +1,11 @@
 {% extends layout %}
 
-{% block title %} Index title Override {% endblock %}
+{% block title %} {{ title }} {% endblock %}
 
 {% block styles %}
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 {% endblock %}
 
 {% block javascript %}
@@ -19,15 +20,23 @@
 	<div class="text-center" style="padding:50px 0px">
 		<img height="120px" src="{{ asset('PHPencil_logo.png') }}" />
 	</div>
-	
+
 	<div class="row">
 		<div class="col-sm-3">
 		
 			<div class="list-group">
-			  <a class="list-group-item" href="#"><i class="fa fa-home fa-fw"></i>&nbsp; Home</a>
-			  <a class="list-group-item" href="#"><i class="fa fa-book fa-fw"></i>&nbsp; Library</a>
-			  <a class="list-group-item" href="#"><i class="fa fa-pencil fa-fw"></i>&nbsp; Applications</a>
-			  <a class="list-group-item" href="#"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings <span class="badge">4</span></a>
+			  <a class="list-group-item" href="{{ link('main', 'index') }}">
+			  		<i class="fa fa-home fa-fw"></i>&nbsp; List (index)
+			  </a>
+			  <a class="list-group-item" href="{{ link('main', 'view') }}">
+			  		<i class="fa fa-book fa-fw"></i>&nbsp; View
+			  </a>
+			  <a class="list-group-item" href="{{ link('main', 'edit') }}">
+			  		<i class="fa fa-pencil fa-fw"></i>&nbsp; Edit
+			  </a>
+			  <a class="list-group-item" href="{{ link('main', 'index') }}">
+			  		<i class="fa fa-cog fa-fw"></i>&nbsp; Settings <span class="badge">4</span>
+			  </a>
 			</div>
 
 		</div>
@@ -38,15 +47,23 @@
 
 					<h1 style="margin-top:0px">Index</h1>
 
-					<p>This is a test template</p>
-					{{ title }}
-					<ul>
+					<div style="margin:15px 0px">
+						<button class="btn btn-success">Add New Item</button>
+						<button class="btn btn-info">Edit Something</button>
+						<button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+					</div>
+
+					<table class="table table-striped">
 						{% for item in items %}
-							<li>{{ item }}</li>
+							<tr>
+								<td>{{ item.name }}</td>
+								<td>{{ item.date }}</td>
+								<td><span class="label label-warning">{{ item.status }}</span></td>
+							</tr>
 						{% else %}
 							No item has been found.
 						{% endfor %}
-					</ul>
+					</table>
 
 				</div>
 			</div>

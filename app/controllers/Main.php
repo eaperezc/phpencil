@@ -60,7 +60,28 @@ class Main extends Controller
 
         // Set the variables for the view
         $this->view->assign('title', 'Index Title');
-        $this->view->assign('items', ['Item1', 'Item2']);
+        $this->view->assign('items', [
+            'Item1' => [
+                'name' => 'My first item',
+                'date' => date('m-d-Y'),
+                'status' => 'good'
+            ],
+            'Item2' => [
+                'name' => 'My second item',
+                'date' => date('m-d-Y'),
+                'status' => 'good'
+            ],
+            'Item3' => [
+                'name' => 'My third item',
+                'date' => date('m-d-Y'),
+                'status' => 'not so good'
+            ],
+            'Item4' => [
+                'name' => 'My last item',
+                'date' => date('m-d-Y'),
+                'status' => 'meh'
+            ],
+        ]);
 
     }
 
@@ -75,7 +96,21 @@ class Main extends Controller
     public function edit()
     {
         // Set the content of the page
-        $this->view->content_tpl = 'main/edit.php';
+        $this->view->template = 'main/edit.php';
+    }
+
+    /**
+     * View Action
+     *
+     * Action for this controller that handles the
+     * display of a particular record.
+     *
+     * @since 0.1
+     */
+    public function view()
+    {
+        // Set the content of the page
+        $this->view->template = 'main/view.php';
     }
     
 }

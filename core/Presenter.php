@@ -65,7 +65,13 @@ class Presenter
         // this will serve as a helper function to get to the assets folder
         $this->engine->addFunction(new Twig_SimpleFunction("asset", 
             function ($file_path) {
-                return 'app/public/' . $file_path;
+                return APP_BASE_PATH . '/app/public/' . $file_path;
+        }));
+
+        // this will serve as a helper function to get links to controllers
+        $this->engine->addFunction(new Twig_SimpleFunction("link", 
+            function ($controller, $action) {
+                return APP_BASE_PATH . '/' . $controller . '/' . $action;
         }));
 
     }

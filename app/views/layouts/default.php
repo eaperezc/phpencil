@@ -16,7 +16,7 @@
         <title>{% block title %}Page Title{% endblock %}</title>
 
         <!-- Browser favicon -->
-        <link rel="shortcut icon" href="favicon.png">
+        <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
 
         {% block styles %}
         {% endblock %}

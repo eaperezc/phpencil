@@ -4,9 +4,11 @@
 
         <h1>404 - Damn! the page you requested was not found</h1>
 
-        <div class="well">
-            {{ error }}
-        </div>
+        {% if error %}
+            <div class="well">
+                {{ error }}
+            </div>
+        {% endif %}
 
     </div>
 

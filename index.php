@@ -12,9 +12,11 @@ define('VENDOR_DIR', ROOT_DIR .'vendor/');
 
 //Paths constants
 define('ROOT_PATH', str_replace('\\', '/', dirname(__FILE__).'/'));
+define('APP_BASE_PATH', str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']));
 
 //Configuration constants
 define('DEBUG', false);
+
 
 // Includes classes with composer autoload
 require_once ("./vendor/autoload.php");
