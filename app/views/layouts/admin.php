@@ -19,6 +19,7 @@
         <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
 
         {% block styles %}
+            <link rel="stylesheet" href="{{ asset('styles/admin.css') }}">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         {% endblock %}
@@ -26,9 +27,17 @@
     </head>
     <body>
 
-        <!-- Here we will display the whole tpl content -->
-		{% block content %}
-        {% endblock %}
+        <div class="viewport">
+            
+            {% include 'partials/side-menu.php' %}
+
+            <div class="center-content">
+
+                <!-- Here we will display the whole tpl content -->
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
     
         {% block javascript %}
             <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>

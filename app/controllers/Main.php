@@ -27,8 +27,8 @@ class Main extends Controller
 	{
         # This happens before everything...
 
-        // Set the content of the page
-        //$this->view->layout = 'app-layout.php';
+        // With this we can switch to an adminlike layout
+        //$this->view->layout = 'admin.php';
 	}
 
 	/**

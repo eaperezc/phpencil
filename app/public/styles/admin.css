@@ -1,0 +1,47 @@
+.viewport .side-menu {
+    width: 270px;
+    height: 100%;   
+    background: #382e2e;
+    position: absolute;
+    /* 544545 */
+}
+
+.viewport .side-menu .side-header {
+    padding: 20px 10px;
+    background: #382e2e;
+    color: #eee;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.viewport .side-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.viewport .side-menu li {
+    padding: 12px;
+    background: #382e2e;
+    cursor: pointer;
+}
+
+.viewport .side-menu li:hover {
+    background: #544545;
+}
+
+.viewport .side-menu a {
+    text-decoration: none;
+    color: #eee;
+}
+
+.viewport .side-menu i {
+    vertical-align: middle;
+    font-size: 22px;
+    margin-right: 12px;
+}
+
+.viewport .center-content {
+    margin-left: 300px;
+}
