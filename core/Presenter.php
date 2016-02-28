@@ -31,6 +31,12 @@ class Presenter
 	public $template = 'errors/404.php';
 
     /**
+     * Render template as a json if
+     * this view flag is true
+     */
+    public $json = false;
+
+    /**
      * View variables.
      * 
      * All variables defined here will be accessable by the templates.
@@ -58,8 +64,13 @@ class Presenter
         // Here we initialize the controllers properties.
         $this->vars = [];
 
-        // Here we initialize the template engine "Twig"
-        $loader = new Twig_Loader_Filesystem( APP_DIR . 'views/');
+        // With this we are loading our template folder and our helper
+        // template for json responses
+        $loader = new Twig_Loader_Chain([
+            new Twig_Loader_Filesystem( APP_DIR . 'views/'), 
+            new Twig_Loader_Array([ 'json.php' => '{{ data|json_encode|raw }}' ])
+        ]);
+        // Create the twig environment
         $this->engine = new Twig_Environment($loader);
 
         // this will serve as a helper function to get to the assets folder
@@ -108,15 +119,19 @@ class Presenter
         $this->vars['template'] = $this->template;
 
         try {
-            // Includes the layout for the view
-            echo $this->engine->render($this->template, $this->vars);
+
+            if ($this->json) {
+                // Render a json
+                header('Content-Type: application/json');
+                echo $this->engine->render('json.php', [ 'data' => $this->vars ]);
+            } else {
+                // Includes the layout for the view
+                echo $this->engine->render($this->template, $this->vars); 
+            }
             
         } catch (Exception $e) {
-            
-            // The content is going to be the error page
-            $this->vars['template'] = 'errors/404.php';
             // Includes the layout for the view
-            echo $this->engine->render($this->template, $this->vars);
+            echo $this->renderError($e->getMessage());
         }
 
     }

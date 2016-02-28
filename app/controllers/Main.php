@@ -29,6 +29,10 @@ class Main extends Controller
 
         // With this we can switch to an adminlike layout
         //$this->view->layout = 'admin.php';
+
+        // This changes the whole rendering to render
+        // a json object with the view variables
+        //$this->view->json = true;
 	}
 
 	/**
@@ -54,7 +58,6 @@ class Main extends Controller
      */
     public function index()
     {
-
         // Set the content of the page
         $this->view->template = 'main/index.php';
 
