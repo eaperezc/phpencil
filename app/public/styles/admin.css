@@ -7,8 +7,9 @@
 }
 
 .viewport .side-menu .side-header {
-    padding: 20px 10px;
-    background: #382e2e;
+    border-bottom: 1px solid #906C6C;
+    padding: 8px 10px;
+    background: #7D4848;
     color: #eee;
     font-size: 24px;
     text-align: center;
@@ -43,5 +44,5 @@
 }
 
 .viewport .center-content {
-    margin-left: 300px;
+    margin-left: 270px;
 }

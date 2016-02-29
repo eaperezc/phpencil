@@ -33,6 +33,8 @@
 
             <div class="center-content">
 
+                {% include 'partials/admin-toolbar.php' %}
+
                 <!-- Here we will display the whole tpl content -->
                 {% block content %}
                 {% endblock %}
