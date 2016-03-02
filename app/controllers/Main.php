@@ -28,7 +28,7 @@ class Main extends Controller
         # This happens before everything...
 
         // With this we can switch to an adminlike layout
-        //$this->view->layout = 'admin.php';
+        $this->view->layout = 'admin.php';
 
         // This changes the whole rendering to render
         // a json object with the view variables

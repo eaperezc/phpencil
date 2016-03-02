@@ -46,3 +46,12 @@
 .viewport .center-content {
     margin-left: 270px;
 }
+
+@media(max-width:767px){
+    .side-menu, .navbar-brand {
+        display: none;
+    }
+    .viewport .center-content {
+        margin-left: 0px;
+    }
+}
