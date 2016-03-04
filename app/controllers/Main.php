@@ -14,7 +14,7 @@
  */
 class Main extends Controller
 {
-	
+
 	/**
      * Before every Action
      *
@@ -115,6 +115,5 @@ class Main extends Controller
         // Set the content of the page
         $this->view->template = 'main/view.php';
     }
-    
-}
 
+}

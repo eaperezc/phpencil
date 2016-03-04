@@ -18,7 +18,7 @@ class Controller
     /**
      * Model names
      *
-     * Array of strings that includes the model names that will 
+     * Array of strings that includes the model names that will
      * be used in the controller.
      *
      * @var array
@@ -40,8 +40,8 @@ class Controller
     /**
      * Request Parameters
      *
-     * All the parameters that were passed to 
-     * the controller using the router. 
+     * All the parameters that were passed to
+     * the controller using the router.
      *
      * @access protected
      */
@@ -56,7 +56,7 @@ class Controller
      * @access public
      */
 	public function __construct($params) {
-		
+
         // Here we initialize the controllers properties.
         $this->params = $params;
 
@@ -135,7 +135,7 @@ class Controller
     {
         # Nothing to do here
     }
-    
+
     /**
      * afterAction method
      *
@@ -150,5 +150,3 @@ class Controller
     }
 
 }
-
-

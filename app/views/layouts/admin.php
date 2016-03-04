@@ -2,7 +2,7 @@
     <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
     <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
     <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-    <!--[if gt IE 8]><!--> 
+    <!--[if gt IE 8]><!-->
     <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
@@ -28,7 +28,7 @@
     <body>
 
         <div class="viewport">
-            
+
             {% include 'partials/side-menu.php' %}
 
             <div class="center-content">
@@ -40,7 +40,7 @@
                 {% endblock %}
             </div>
         </div>
-    
+
         {% block javascript %}
             <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

@@ -12,7 +12,7 @@
 
 	<div class="row">
 		<div class="col-sm-3">
-		
+
 			<div class="list-group">
 			  <a class="list-group-item" href="{{ link('main', 'index') }}">
 			  		<i class="fa fa-home fa-fw"></i>&nbsp; List (index)

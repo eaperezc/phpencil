@@ -14,7 +14,7 @@
  */
 class Router
 {
-    
+
     /**
      * Constructor for the class
      *
@@ -23,7 +23,7 @@ class Router
      *
      * @access public
      */
-	public function __construct () 
+	public function __construct ()
 	{
         // Get the parameters of the URL
         $url_params = $this->getUrlParameters();
@@ -54,7 +54,7 @@ class Router
 
         // Get the parameters of the request
         $argsLength = sizeof($cleanParams);
-        for ($argsIndex = 3; $argsIndex < $argsLength; $argsIndex++) { 
+        for ($argsIndex = 3; $argsIndex < $argsLength; $argsIndex++) {
         	$params['args'][] = $cleanParams[$argsIndex];
         }
 
@@ -96,8 +96,8 @@ class Router
             require_once( $controller_path );
 
             // Instantiate the controller
-            $controller = new $controller_name( 
-                isset($params['args'])? $params['args']: null 
+            $controller = new $controller_name(
+                isset($params['args'])? $params['args']: null
             );
 
             // Validate that the method for the action is defined
@@ -113,9 +113,8 @@ class Router
             $view = new Presenter();
             $view->renderError($e->getMessage());
         }
-		
+
 	}
 
 
 }
-

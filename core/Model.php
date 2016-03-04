@@ -32,7 +32,7 @@ abstract class Model
     protected $table = '';
 
     /**
-     * This will be the driver object for the 
+     * This will be the driver object for the
      * database operations (probably redbean)
      */
     protected $db = null;
@@ -43,7 +43,7 @@ abstract class Model
      * With this magic method we will create all getter
      * methods for out model objects
      */
-    public function __get($name) 
+    public function __get($name)
     {
         if (!isset($this->cached_values[$name])) {
             return null;
@@ -57,12 +57,10 @@ abstract class Model
      * With this magic method we will create all setter
      * methods for out model objects
      */
-    public function __set($name, $value) 
+    public function __set($name, $value)
     {
         // Maybe we should validate the existence of the field
         $this->cached_values[$name] = $value;
     }
 
 }
-
-

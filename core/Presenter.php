@@ -17,15 +17,15 @@ class Presenter
 {
     /**
 	 * This is the main template variable
-	 * 
+	 *
 	 * This template defines the global layout to be used.
 	 */
 	public $layout = 'default.php';
 
 	/**
 	 * Content tpl for the specific action.
-	 * 
-	 * This template defines content that will be used inside of 
+	 *
+	 * This template defines content that will be used inside of
 	 * the layout_tpl. Usually its different per controller action.
 	 */
 	public $template = 'errors/404.php';
@@ -38,7 +38,7 @@ class Presenter
 
     /**
      * View variables.
-     * 
+     *
      * All variables defined here will be accessable by the templates.
      * with the 'assign' method we add them from the controllers.
      */
@@ -46,7 +46,7 @@ class Presenter
 
     /**
      * Template Engine.
-     * 
+     *
      * Engine used to render the templates.
      */
     private $engine;
@@ -60,27 +60,27 @@ class Presenter
      * @access public
      */
     public function __construct() {
-        
+
         // Here we initialize the controllers properties.
         $this->vars = [];
 
         // With this we are loading our template folder and our helper
         // template for json responses
         $loader = new Twig_Loader_Chain([
-            new Twig_Loader_Filesystem( APP_DIR . 'views/'), 
+            new Twig_Loader_Filesystem( APP_DIR . 'views/'),
             new Twig_Loader_Array([ 'json.php' => '{{ data|json_encode|raw }}' ])
         ]);
         // Create the twig environment
         $this->engine = new Twig_Environment($loader);
 
         // this will serve as a helper function to get to the assets folder
-        $this->engine->addFunction(new Twig_SimpleFunction("asset", 
+        $this->engine->addFunction(new Twig_SimpleFunction("asset",
             function ($file_path) {
                 return APP_BASE_PATH . '/app/public/' . $file_path;
         }));
 
         // this will serve as a helper function to get links to controllers
-        $this->engine->addFunction(new Twig_SimpleFunction("link", 
+        $this->engine->addFunction(new Twig_SimpleFunction("link",
             function ($controller, $action) {
                 return APP_BASE_PATH . '/' . $controller . '/' . $action;
         }));
@@ -101,7 +101,7 @@ class Presenter
         //assign a variable to be used in the view
         $this->vars[$name] = $value;
     }
-    
+
 
     /**
      * Registers the status of foo's universe
@@ -126,9 +126,9 @@ class Presenter
                 echo $this->engine->render('json.php', [ 'data' => $this->vars ]);
             } else {
                 // Includes the layout for the view
-                echo $this->engine->render($this->template, $this->vars); 
+                echo $this->engine->render($this->template, $this->vars);
             }
-            
+
         } catch (Exception $e) {
             // Includes the layout for the view
             echo $this->renderError($e->getMessage());
@@ -161,4 +161,3 @@ class Presenter
 
 
 }
-

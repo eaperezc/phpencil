@@ -38,4 +38,3 @@ We created some Sublime Snippets to help the creation of classes on the framewor
 ### Development
 
 Want to contribute? Great! Get the code and start coding. All contributions will be deeply appreciated. More technical and complete documentation will come in the future.
-
