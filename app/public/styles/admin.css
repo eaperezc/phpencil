@@ -1,15 +1,14 @@
 .viewport .side-menu {
     width: 270px;
     height: 100%;
-    background: #382e2e;
+    background: #414A58;
     position: absolute;
-    /* 544545 */
 }
 
 .viewport .side-menu .side-header {
-    border-bottom: 1px solid #906C6C;
+    border-bottom: 1px solid #eee;
     padding: 8px 10px;
-    background: #7D4848;
+    background: #689C69;
     color: #eee;
     font-size: 24px;
     text-align: center;
@@ -24,12 +23,12 @@
 
 .viewport .side-menu li {
     padding: 12px;
-    background: #382e2e;
+    background: #414A58;
     cursor: pointer;
 }
 
 .viewport .side-menu li:hover {
-    background: #544545;
+    background: #313844;
 }
 
 .viewport .side-menu a {
