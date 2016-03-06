@@ -149,4 +149,22 @@ class Controller
         # Nothing to do here
     }
 
+    /**
+     * redirect method
+     *
+     * Helper method that redirects the page to a different place.
+     * @param string $controller Name of the controller to go to.
+     * @param string $actions The requested action name.
+     *
+     * @since 0.1
+     */
+    protected function redirect ($controller, $action)
+    {
+        // Here we prepare the header string
+        $redirect = sprintf('Location: %s/%s/%s', APP_BASE_PATH, $controller, $action);
+        // Now we send the header to redirect the user.
+        header( $redirect ) ;
+        exit();
+    }
+
 }

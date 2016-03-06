@@ -1,6 +1,6 @@
 # PHPencil Framework
 
-PHPencil is another php MVC web framework thought as a simple to understand php framework. The idea behind it is that common frameworks are getting to big and dependent on themselves, this one is as extendable and modifiable as the developers needs. The main features are:
+PHPencil is another php MVC web framework thought as a easy php framework. The idea behind it is that common frameworks are getting to big and crazy so I wanted to have a small framework that I can use for small projects without the need of installing a big framework. This one is as extendable and modifiable as the developers needs. The main features are:
 
   - Simple controller routing.
   - Easy to exteng Controllers.
@@ -17,8 +17,9 @@ We think that this could be a nice starting point for new php projects that dont
 PHPencil is using this widelly used technologies:
 
 * [Composer] - Dependency management system.
-* [Twig] - Template engine.
-* [Twitter Bootstrap] - for the examples (not required).
+* [Twig] - Views Template engine.
+* [PHP Active Record] - ORM library for the Models.
+* [Twitter Bootstrap] - For the examples (not required).
 * [jQuery] - duh.
 
 ### Installation
@@ -28,7 +29,7 @@ Get the code and start using it:
 ```sh
 $ git clone https://github.com/eaperezc/phpencil.git myApp
 $ cd myApp
-$ php composer.phar update
+$ composer update
 ```
 
 ### Plugins

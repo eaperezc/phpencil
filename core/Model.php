@@ -14,5 +14,20 @@
  */
 class Model extends ActiveRecord\Model
 {
-    
+    /**
+     * Prepares the data to create a new model.
+     * @return array $data with valid Model data
+     */
+    public static function prepareData ($raw_data)
+    {
+        // First we get the columns for the model
+        $columns = self::table()->columns;
+
+        // Now we prepare a clean array with valid values
+		$data = [];
+		foreach ($columns as $name => $values) {
+			$data[$name] = isset($raw_data[$name])?$raw_data[$name]:null;
+		}
+        return $data;
+    }
 }
