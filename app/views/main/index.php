@@ -7,7 +7,7 @@
 <div class="container-fluid">
 
 	<div class="text-center" style="padding:50px 0px">
-		<img height="120px" src="{{ asset('PHPencil_logo.png') }}" />
+		<img height="120px" src="{{ asset('logo.png') }}" />
 	</div>
 
 	<div class="row">

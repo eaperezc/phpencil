@@ -6,7 +6,7 @@
 
         {% if error %}
             <div class="well">
-                {{ error }}
+                <pre>{{ error }}</pre>
             </div>
         {% endif %}
 

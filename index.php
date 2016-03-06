@@ -21,5 +21,8 @@ define('DEBUG', false);
 // Includes classes with composer autoload
 require_once ("./vendor/autoload.php");
 
+// Run the app configurations
+require_once ("./app/config/bootstrap.php");
+
 // This routes the app to the respective controller
 $router = new Router();

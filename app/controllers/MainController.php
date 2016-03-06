@@ -12,7 +12,7 @@
  * @version    0.1
  * @since      Class available since 2015
  */
-class Main extends Controller
+class MainController extends Controller
 {
 
 	/**

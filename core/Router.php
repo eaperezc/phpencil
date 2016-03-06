@@ -77,8 +77,8 @@ class Router
 
         try {
             // We prepare the requested controller path
-            $controller_name = ucfirst($params['controller']);
-            $controller_path = APP_DIR . 'controllers/' . ucfirst($params['controller'] . '.php');
+            $controller_name = ucfirst($params['controller']) . 'Controller';
+            $controller_path = APP_DIR . 'controllers/' . $controller_name . '.php';
 
             // Validate that the controller file exist
             if ( !file_exists($controller_path) ) {
