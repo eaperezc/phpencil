@@ -1,8 +1,17 @@
+body {
+    background: #E8ECE8;
+}
+
+.navbar-default {
+    border-bottom-color: #BFBFBF;
+    border-radius: 0px;
+}
+
 .viewport .side-menu {
+    position: absolute;
     width: 270px;
     height: 100%;
     background: #414A58;
-    position: absolute;
 }
 
 .viewport .side-menu .side-header {
