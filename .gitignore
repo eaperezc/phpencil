@@ -4,3 +4,6 @@ vendor/
 # Composer files
 #composer.lock
 composer.phar
+
+# Test files
+tests/

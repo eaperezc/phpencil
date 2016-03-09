@@ -14,6 +14,54 @@
  */
 class Router
 {
+    // Request controller
+    private $controller = '';
+    // Request action
+    private $action = '';
+    // Request url parameters
+    private $args = [];
+
+    /**
+     * Getter for the controller name
+     */
+    public function getController()
+    {
+        return $this->controller;
+    }
+
+    /**
+     * Getter for the action name
+     */
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    /**
+     * Getter for the arguments array
+     */
+    public function getArguments()
+    {
+        return $this->args;
+    }
+
+    /**
+     * Get the Controller File Path
+     *
+     * With this method we return the full path of
+     * the requested controller class file.
+     *
+     * @return string $controller_path The path of the controller php file
+     */
+    public function getControllerFilePath()
+    {
+        // We prepare the requested controller path
+        $controller_name = ucfirst($this->controller) . 'Controller';
+        $controller_path = APP_DIR . 'controllers/' . $controller_name . '.php';
+        
+        // return the controller file path
+        return $controller_path;
+    }
 
     /**
      * Constructor for the class
@@ -25,40 +73,19 @@ class Router
      */
 	public function __construct ()
 	{
-        // Get the parameters of the URL
-        $url_params = $this->getUrlParameters();
+        // Clean the url data to get the parameters
+        $pagePath = str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']);
+        $cleanParams = explode('/', str_replace($pagePath, '', $_SERVER['REDIRECT_URL']));
 
-        // Redirect to the controller action
-        $this->route($url_params);
-	}
-
-	/**
-	 * getUrlParameters
-	 *
-	 * Method that gets the parameters of the request
-	 *
-	 * @return array parameters of the request.
-	 * @since 0.1
-	 */
-	private function getUrlParameters ()
-	{
-		// Clean the url data to get the parameters
-	    $pagePath = str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']);
-	    $cleanParams = explode('/', str_replace($pagePath, '', $_SERVER['REDIRECT_URL']));
-
-	    // Controller and action. Index action is default if not defined
-        $params = [
-        	'controller' => !empty($cleanParams[1])?$cleanParams[1]:'main',
-        	'action' 	 => !empty($cleanParams[2])?$cleanParams[2]:'index'
-        ];
+        // Controller and action. Index action is default if not defined
+        $this->controller   = !empty($cleanParams[1])?$cleanParams[1]:'main';
+        $this->action       = !empty($cleanParams[2])?$cleanParams[2]:'index';
 
         // Get the parameters of the request
         $argsLength = sizeof($cleanParams);
         for ($argsIndex = 3; $argsIndex < $argsLength; $argsIndex++) {
-        	$params['args'][] = $cleanParams[$argsIndex];
+            $this->args[] = $cleanParams[$argsIndex];
         }
-
-        return $params;
 	}
 
 	/**
@@ -72,23 +99,16 @@ class Router
 	 *               foo could not be set.
 	 * @since 0.1
 	 */
-	private function route($params)
+	public function route()
 	{
-
         try {
             // We prepare the requested controller path
-            $controller_name = ucfirst($params['controller']) . 'Controller';
-            $controller_path = APP_DIR . 'controllers/' . $controller_name . '.php';
+            $controller_name = ucfirst($this->controller) . 'Controller';
+            $controller_path = $this->getControllerFilePath();
 
             // Validate that the controller file exist
             if ( !file_exists($controller_path) ) {
-
-                // A controller needs to be defined (will never happen)
-                if ( empty($params['controller']) ){
-                    throw new Exception('No controller was defined in the request.');
-                }
-
-                $error = (ucfirst($params['controller'] . '.php') . ' - Controller file doesn\'t exist.');
+                $error =  $controller_name . '.php' . ' - Controller file doesn\'t exist.';
                 throw new Exception($error);
             }
 
@@ -96,17 +116,15 @@ class Router
             require_once( $controller_path );
 
             // Instantiate the controller
-            $controller = new $controller_name(
-                isset($params['args'])? $params['args']: null
-            );
+            $controller = new $controller_name($this->args);
 
             // Validate that the method for the action is defined
-            if ( !method_exists ($controller, $params['action']) ) {
-                throw new Exception('Action "' . $params['action'] . '" is not available');
+            if ( !method_exists ($controller, $this->action) ) {
+                throw new Exception('Action "' . $this->action . '" is not available');
             }
 
             // Call the action
-            $controller->callAction($params['action']);
+            $controller->callAction($this->action);
 
         } catch( Exception $e ) {
             // Here we will capture any problem found on the routing
