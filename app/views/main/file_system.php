@@ -95,6 +95,7 @@
   .upload-file-btn {
     margin-bottom: 10px;
     width: 100%;
+    border-radius: 1px;
   }
 
 </style>
