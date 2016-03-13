@@ -116,4 +116,19 @@ class MainController extends Controller
         $this->view->template = 'main/view.php';
     }
 
+    /**
+     * File System Sandbox Action
+     *
+     * Action created as a sandbox to play with a filesystem.
+     *
+     * @since 0.1
+     */
+    public function filesystem()
+    {
+        $this->view->layout = 'default.php';
+
+        // Set the content of the page
+        $this->view->template = 'main/file_system.php';
+    }
+
 }
